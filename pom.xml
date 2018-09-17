@@ -1,0 +1,158 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>com.develop.basic.project</groupId>
+  <artifactId>SpringBatchScheduler</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <packaging>war</packaging>
+  
+  <name>SpringBatchScheduler WebApp</name>
+  <url>http://maven.apache.org</url>
+  
+  <properties>
+  	<jdk.version>1.8</jdk.version>
+  	<spring.version>4.3.10.RELEASE</spring.version>
+  	<spring.batch.version>3.0.7.RELEASE</spring.batch.version>
+  	<hibernate.version>5.2.10.Final</hibernate.version>
+  	<mysql.version>6.0.6</mysql.version>
+  	<junit.version>3.8.1</junit.version>
+  	<log4j.version>1.2.17</log4j.version>
+  </properties>
+  
+  <dependencies>
+	<!-- Spring Core -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-core</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	
+	<!-- Spring MVC -->
+	<dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>${spring.version}</version>
+	</dependency>
+	
+	<!-- Spring jdbc, for database -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-jdbc</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	
+	<!-- Spring XML to/back object -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-oxm</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	
+	<!-- MySQL database driver -->
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>${mysql.version}</version>
+	</dependency>
+	
+	<!-- Spring Batch dependencies -->
+	<dependency>
+		<groupId>org.springframework.batch</groupId>
+		<artifactId>spring-batch-core</artifactId>
+		<version>${spring.batch.version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.springframework.batch</groupId>
+		<artifactId>spring-batch-infrastructure</artifactId>
+		<version>${spring.batch.version}</version>
+	</dependency>
+	
+	<!-- Spring Batch unit test -->
+	<dependency>
+		<groupId>org.springframework.batch</groupId>
+		<artifactId>spring-batch-test</artifactId>
+		<version>${spring.batch.version}</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-orm</artifactId>
+	    <version>${spring.version}</version>
+	</dependency>
+
+	<dependency>
+	  <groupId>org.hibernate</groupId>
+	  <artifactId>hibernate-core</artifactId>
+	  <version>${hibernate.version}</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>log4j</groupId>
+	  <artifactId>log4j</artifactId>
+	  <version>${log4j.version}</version>
+	</dependency>
+	
+	<!-- Junit -->
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>${junit.version}</version>
+		<scope>test</scope>
+	</dependency>
+	
+	<dependency>
+    	<groupId>javax.servlet</groupId>
+    	<artifactId>servlet-api</artifactId>
+    	<version>2.5</version>
+    	<scope>provided</scope>
+	</dependency>
+  </dependencies>
+  
+  <build>
+	<finalName>SpringBatchScheduler</finalName>
+	
+	<plugins>
+    <!-- Eclipse project -->
+	  <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-eclipse-plugin</artifactId>
+		<version>2.9</version>
+		<configuration>
+		        <!-- Always download and attach dependencies source code -->
+			<downloadSources>true</downloadSources>
+			<downloadJavadocs>false</downloadJavadocs>
+			<!-- Avoid type mvn eclipse:eclipse -Dwtpversion=2.0 -->
+			<wtpversion>2.0</wtpversion>
+		</configuration>
+	  </plugin>
+
+	  <!-- Set JDK Compiler Level -->
+	  <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-compiler-plugin</artifactId>
+		<version>2.3.2</version>
+		<configuration>
+			<source>${jdk.version}</source>
+			<target>${jdk.version}</target>
+		</configuration>
+	  </plugin>
+
+	  <!-- For Maven Tomcat Plugin -->
+	  <plugin>
+		<groupId>org.apache.tomcat.maven</groupId>
+		<artifactId>tomcat7-maven-plugin</artifactId>
+		<version>2.2</version>
+		<configuration>
+			<path>/CounterWebApp</path>
+		</configuration>
+	  </plugin>
+
+	</plugins>  
+  </build>
+  
+</project>
